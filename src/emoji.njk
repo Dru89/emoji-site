@@ -1,0 +1,92 @@
+---
+pagination:
+  data: emoji.all
+  size: 1
+  alias: emoji
+permalink: "{{ emoji.permalink }}"
+layout: base.njk
+eleventyComputed:
+  title: "{{ emoji.title }}"
+---
+<section class="description">
+  <h1>{{ emoji.title }}</h1>
+</section>
+<section class="versions">
+  <h2>Versions</h2>
+  <ul>
+  {%- if emoji.has_img_apple -%}
+    <li class="vendor" data-vendor="apple">
+      <div class="vendor__name">Apple</div>
+      <div class="vendor__image">
+        {# TODO: Most of the style here can be moved to a CSS sheet -#}
+        <img src="/static/emoji/apple/sheet-64.png" style="width: 64px; height: 64px; object-fit: none; object-position: {{ emoji.position }}" />
+      </div>
+    </li>
+  {%- endif -%}
+  {%- if emoji.has_img_google -%}
+    <li class="vendor" data-vendor="google">
+      <div class="vendor__name">Google</div>
+      <div class="vendor__image">
+        {# TODO: Most of the style here can be moved to a CSS sheet -#}
+        <img src="/static/emoji/google/sheet-64.png" style="width: 64px; height: 64px; object-fit: none; object-position: {{ emoji.position }}" />
+      </div>
+    </li>
+  {%- endif -%}
+  {%- if emoji.has_img_facebook -%}
+    <li class="vendor" data-vendor="facebook">
+      <div class="vendor__name">Facebook</div>
+      <div class="vendor__image">
+        {# TODO: Most of the style here can be moved to a CSS sheet -#}
+        <img src="/static/emoji/facebook/sheet-64.png" style="width: 64px; height: 64px; object-fit: none; object-position: {{ emoji.position }}" />
+      </div>
+    </li>
+  {%- endif -%}
+  {%- if emoji.has_img_twitter -%}
+    <li class="vendor" data-vendor="twitter">
+      <div class="vendor__name">Twitter</div>
+      <div class="vendor__image">
+        {# TODO: Most of the style here can be moved to a CSS sheet -#}
+        <img src="/static/emoji/twitter/sheet-64.png" style="width: 64px; height: 64px; object-fit: none; object-position: {{ emoji.position }}" />
+      </div>
+    </li>
+  {%- endif -%}
+  </ul>
+</section>
+<section class="info">
+  <h2>Unicode Details</h2>
+  <table>
+    <tbody>
+      <tr>
+        <td>Character</td>
+        <td>{{ emoji.character }}</td>
+      </tr>
+      <tr>
+        <td>Codepoints</td>
+        <td>
+          {%- for codepoint in emoji.codepoints -%}
+            <code>{{ codepoint }}</code>{% if not loop.last %},{% endif %}
+          {%- endfor -%}
+        </td>
+      <tr>
+        <td>Shortcodes</td>
+        <td>
+          {%- for shortcode in emoji.short_names -%}
+            <code>:{{ shortcode }}:</code>{% if not loop.last %}, {% endif %}
+          {%- endfor -%}
+        </td>
+      </tr>
+      {% if emoji.category -%}
+      <tr>
+        <td>Category</td>
+        <td>{{ emoji.category }}</td>
+      </tr>
+      {%- endif %}
+      {% if emoji.subcategory -%}
+      <tr>
+        <td>Subcategory</td>
+        <td>{{ emoji.subcategory }}</td>
+      </tr>
+      {%- endif %}
+    </tbody>
+  </table>
+</section>

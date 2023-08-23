@@ -1,0 +1,11 @@
+{
+  "title": "emojiphile",
+  "url": "https://emojiphile.com",
+  "domain": "emojiphile.com",
+  "description": "Quick emoji lookup information",
+  "language": "en-US",
+  "author": {
+    "name": "Drew Hays",
+    "email": "drew@unremarkable.dev"
+  }
+}

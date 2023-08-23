@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% if hidden -%}
+    <meta name="robots" content="noindex" />
+    {%- endif %}
+    {#- TODO: add opengraph and twitter meta stuff -#}
+    <title>{% if title %}{{ title }} - {% endif %}{{ metadata.title }}</title>
+    {#- TODO: add CSS, fonts, and dark mode -#}
+    {% block head -%}{%- endblock %}
+  </head>
+  <body>
+    <main>
+      {% block content %}{{ content | safe }} {% endblock %}
+    </main>
+    <footer>
+      <div>© <a href="https://unremarkable.dev">Unremarkable Developments</a> {{ global.currentYear() }}</div>
+    </footer>
+  </body>
+</html>

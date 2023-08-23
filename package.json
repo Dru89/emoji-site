@@ -1,0 +1,22 @@
+{
+  "name": "emojiphile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@11ty/eleventy": "^2.0.1",
+    "@sindresorhus/slugify": "^2.2.1",
+    "emoji-datasource": "^15.0.1",
+    "emoji-datasource-apple": "^15.0.1",
+    "emoji-datasource-facebook": "^15.0.1",
+    "emoji-datasource-google": "^15.0.1",
+    "emoji-datasource-twitter": "^15.0.1"
+  }
+}
