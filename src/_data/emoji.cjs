@@ -12,9 +12,11 @@ module.exports = async function () {
       const character = String.fromCodePoint(
         ...e.unified.split("-").map((p) => parseInt(p, 16))
       );
+
       return {
         ...e,
         title: `${character} ${titleize(e.name)}`,
+        vendors: vendors.filter((v) => e[`has_img_${v.id}`]),
         codepoints: e.unified.split("-").map((p) => `U+${p}`),
         position: `${e.sheet_x * -66}px ${e.sheet_y * -66}px`,
         character,
@@ -25,6 +27,13 @@ module.exports = async function () {
     }),
   };
 };
+
+const vendors = [
+  { id: "apple", name: "Apple" },
+  { id: "google", name: "Google" },
+  { id: "facebook", name: "Facebook" },
+  { id: "twitter", name: "Twitter" },
+];
 
 const skinVariations = Object.freeze({
   "1F3FB": "skin-tone-2",

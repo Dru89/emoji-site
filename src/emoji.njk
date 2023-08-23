@@ -10,46 +10,21 @@ eleventyComputed:
 ---
 <section class="description">
   <h1>{{ emoji.title }}</h1>
+  <input type="text" disabled value="{{ emoji.character }}" />
+  <button onclick="navigator.clipboard.writeText('{{emoji.character}}')">Copy</button>
 </section>
 <section class="versions">
   <h2>Versions</h2>
   <ul>
-  {%- if emoji.has_img_apple -%}
-    <li class="vendor" data-vendor="apple">
-      <div class="vendor__name">Apple</div>
+  {%- for vendor in emoji.vendors %}
+    <li class="vendor" data-vendor="{{ vendor.id }}">
+      <div class="vendor__name">{{ vendor.name }}</div>
       <div class="vendor__image">
         {# TODO: Most of the style here can be moved to a CSS sheet -#}
-        <img src="/static/emoji/apple/sheet-64.png" style="width: 64px; height: 64px; object-fit: none; object-position: {{ emoji.position }}" />
+        <img src="/static/emoji/{{vendor.id}}/sheet-64.png" style="width: 64px; height: 64px; object-fit: none; object-position: {{ emoji.position }}" />
       </div>
     </li>
-  {%- endif -%}
-  {%- if emoji.has_img_google -%}
-    <li class="vendor" data-vendor="google">
-      <div class="vendor__name">Google</div>
-      <div class="vendor__image">
-        {# TODO: Most of the style here can be moved to a CSS sheet -#}
-        <img src="/static/emoji/google/sheet-64.png" style="width: 64px; height: 64px; object-fit: none; object-position: {{ emoji.position }}" />
-      </div>
-    </li>
-  {%- endif -%}
-  {%- if emoji.has_img_facebook -%}
-    <li class="vendor" data-vendor="facebook">
-      <div class="vendor__name">Facebook</div>
-      <div class="vendor__image">
-        {# TODO: Most of the style here can be moved to a CSS sheet -#}
-        <img src="/static/emoji/facebook/sheet-64.png" style="width: 64px; height: 64px; object-fit: none; object-position: {{ emoji.position }}" />
-      </div>
-    </li>
-  {%- endif -%}
-  {%- if emoji.has_img_twitter -%}
-    <li class="vendor" data-vendor="twitter">
-      <div class="vendor__name">Twitter</div>
-      <div class="vendor__image">
-        {# TODO: Most of the style here can be moved to a CSS sheet -#}
-        <img src="/static/emoji/twitter/sheet-64.png" style="width: 64px; height: 64px; object-fit: none; object-position: {{ emoji.position }}" />
-      </div>
-    </li>
-  {%- endif -%}
+  {%- endfor -%}
   </ul>
 </section>
 <section class="info">
