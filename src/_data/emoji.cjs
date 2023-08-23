@@ -4,6 +4,15 @@
 const emoji = require("emoji-datasource/emoji.json");
 const titleize = require("../filters/titleize.cjs");
 
+const SPRITE_SIZE = 64;
+const SPIRTE_PADDING = 2;
+
+/**
+ * @param {number} n
+ * @returns {number}
+ */
+const pos = (n) => n * (SPRITE_SIZE + SPIRTE_PADDING) * -1;
+
 module.exports = async function () {
   const { slugifyWithCounter } = await import("@sindresorhus/slugify");
   const permalink = slugifyWithCounter();
@@ -18,7 +27,7 @@ module.exports = async function () {
         title: `${character} ${titleize(e.name)}`,
         vendors: vendors.filter((v) => e[`has_img_${v.id}`]),
         codepoints: e.unified.split("-").map((p) => `U+${p}`),
-        position: `${e.sheet_x * -66}px ${e.sheet_y * -66}px`,
+        position: `${pos(e.sheet_x)}px ${pos(e.sheet_y)}px`,
         character,
         permalink: permalink(e.name, {
           decamelize: false,
