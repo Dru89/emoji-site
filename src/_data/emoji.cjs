@@ -11,7 +11,7 @@ const SPIRTE_PADDING = 2;
  * @param {number} n
  * @returns {number}
  */
-const pos = (n) => n * (SPRITE_SIZE + SPIRTE_PADDING) * -1;
+const pos = (n) => (n * (SPRITE_SIZE + SPIRTE_PADDING) + 1) * -1;
 
 module.exports = async function () {
   const { slugifyWithCounter } = await import("@sindresorhus/slugify");
